@@ -1,0 +1,42 @@
+$gutter: 12px;
+
+.flex-grid {
+	display: flex;
+	padding: 0 $gutter/2;
+	&--full-height {
+		flex-direction: column;
+		height: 100%;
+	}
+}
+
+@for $i from 1 through 12 {
+	.flex-row-#{$i} {
+		flex: #{$i};
+		display: flex;
+		flex-direction: row;
+		margin-left: -$gutter/2;
+		margin-right: -$gutter/2;
+	}
+
+	.flex-col-#{$i} {
+		flex: #{$i};
+		padding: 0 $gutter/2;
+	}
+
+	.flex-col-basis-#{$i} {
+		flex-basis: calc(100% / #{$i});
+		padding: 0 $gutter/2;
+	}
+}
+
+.flex-dir {
+	&--row {
+        flex-direction: row;
+        >div {
+            display: inline-flex;
+        }
+	}
+	&--row-reverse {
+		flex-direction: row-reverse;
+	}
+}

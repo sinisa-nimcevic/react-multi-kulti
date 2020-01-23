@@ -1,0 +1,28 @@
+// Variables
+@import "Styles/variables/_colors.scss";
+@import "Styles/variables/_typography.scss";
+@import "Styles/variables/_spacing.scss";
+@import "Styles/variables/_misc.scss";
+
+// Tools
+@import "Styles/tools/_mixins.scss";
+@import "Styles/tools/_reset.scss";
+@import "Styles/layout/_grid.scss";
+
+// Elements
+// Place basic styling for HTML elements here.
+@import "Styles/elements/_body.scss";
+@import "Styles/elements/_img.scss";
+@import "Styles/elements/_form.scss";
+
+// Blocks
+// Place styling for commonly grouped components here.
+@import "Styles/blocks/_ChooseImageGame.scss";
+
+// Components
+// Place styling for individual components here.
+@import "Styles/components/_FullScreenExplanation.scss";
+
+// Utility Classes
+// These are common short classes which can override all other classes.
+@import "Styles/tools/_utility.scss";

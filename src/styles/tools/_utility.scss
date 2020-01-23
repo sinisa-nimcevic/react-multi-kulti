@@ -1,0 +1,61 @@
+$sizes: "single", "double", "triple";
+$positions: "t", "r", "b", "l";
+$position-names: "top", "right", "bottom", "left";
+
+// Create mt-single type classes for margins and paddings, at all 4 positions with all of the sizes (single, double and triple).
+@each $size in $sizes {
+	.m-#{$size} {
+		margin: index($sizes, $size) * $unit;
+	}
+	.p-#{$size} {
+		padding: index($sizes, $size) * $unit;
+	}
+	@each $pos in $positions {
+		$index: index($positions, $pos);
+
+		.m#{$pos}-#{$size} {
+			margin-#{nth($position-names, $index)}: index($sizes, $size) * $unit;
+		}
+
+		.p#{$pos}-#{$size} {
+			padding-#{nth($position-names, $index)}: index($sizes, $size) * $unit;
+		}
+	}
+}
+
+.clickable-opacity {
+	&:active {
+		opacity: 0.8;
+	}
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+.bg-color-primary {
+	background-color: $color-primary;
+}
+.bg-color-secondary {
+	background-color: $color-secondary;
+}
+.bg-color-tertiary {
+	background-color: $color-tertiary;
+}
+.bg-color-bg-primary {
+	background-color: $color-bg-primary;
+}
+.bg-color-bg-secondary {
+	background-color: $color-bg-secondary;
+}
+.bg-color-danger {
+	background-color: $color-danger;
+}
+.bg-color-success {
+	background-color: $color-success;
+}
+.bg-color-waring {
+	background-color: $color-waring;
+}
+.bg-color-info {
+	background-color: $color-info;
+}
