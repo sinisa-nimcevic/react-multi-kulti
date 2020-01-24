@@ -1,0 +1,33 @@
+.toast {
+	&-container {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		text-align: center;
+		padding: $unit * 2;
+		@include transition($defaultTransition);
+        top: -400px;
+		&--show {
+            top: 0;
+		}
+	}
+	&__close {
+		position: absolute;
+		top: 0;
+		right: 0;
+		padding: $unit;
+    }
+    background-color: #bbb;
+	position: relative;
+	width: 60%;
+	margin-left: 20%;
+	padding: $unit * 2;
+	background: white;
+	box-shadow: $boxShadow;
+	@include transition($defaultTransition);
+	opacity: 0;
+	&--show {
+		opacity: 1;
+	}
+}

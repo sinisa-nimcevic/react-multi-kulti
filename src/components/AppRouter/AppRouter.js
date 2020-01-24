@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import FullScreenExplanation from "Components/FullScreenExplanation/FullScreenExplanation";
+import Toast from "Components/Toast/Toast";
 import MainScreen from "Screens/MainScreen";
 import GameChooseImageScreen from "Screens/GameChooseImageScreen";
 import Game3x3PuzzleScreen from "Screens/Game3x3PuzzleScreen";
@@ -24,6 +25,7 @@ const AppRouter = () => {
 				</Switch>
 			</Router>
 			<FullScreenExplanation />
+			<Toast />
 		</>
 	);
 };

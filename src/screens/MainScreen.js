@@ -15,14 +15,26 @@ const MainScreen = () => {
 
 	return (
 		<Layout>
+			<button
+				className="mr-double"
+				onClick={() => {
+					context.setToastContent(<div>this is a toast.</div>);
+					context.setToastShowStatus(true);
+				}}>
+				toggle toast
+			</button>
+
+			<button
+				onClick={() => {
+					context.setFullScreenExplanationContent(<div>this is a fullscreen explanation.</div>);
+					context.setShowFullScreenExplanationStatus(true);
+				}}>
+				toggle fullscreen explanation
+			</button>
 			<Game3x3Puzzle />
 		</Layout>
 	);
 };
-
-// <Button text="toggle fullScreenExplanation" onClick={() => {
-// 	context.setFullScreenExplanationContent(<div>hi</div>)
-// 	context.setShowFullScreenExplanationStatus(true)}} />
 
 MainScreen.propTypes = {};
 

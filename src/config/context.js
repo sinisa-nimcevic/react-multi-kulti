@@ -24,7 +24,9 @@ export class DataProvider extends Component {
 		this.state = {
 			screens: SCREENS,
 			showFullScreenExplanation: false,
-			fullScreenExplanationContent: null
+			fullScreenExplanationContent: null,
+			showToast: false,
+			toastContent: null
 		};
 	}
 
@@ -78,19 +80,39 @@ export class DataProvider extends Component {
 		this.setState({ fullScreenExplanationContent: content });
 	}
 
+	getToastShowStatus() {
+		return this.state.showToast;
+	}
+
+	setToastShowStatus(status) {
+		this.setState({ showToast: !!status });
+	}
+
+	getToastContent() {
+		return this.state.toastContent;
+	}
+
+	setToastContent(content) {
+		this.setState({ toastContent: content });
+	}
+
 	render() {
 		return (
 			<AppContext.Provider
 				value={{
 					state: this.state,
-					getScreensArray: this.getScreensArray,
-					getScreenData: this.getScreenData,
-					getScreenPathByIndex: this.getScreenPathByIndex,
+					getScreensArray: this.getScreensArray.bind(this),
+					getScreenData: this.getScreenData.bind(this),
+					getScreenPathByIndex: this.getScreenPathByIndex.bind(this),
 					setActiveScreenByPathName: this.setActiveScreenByPathName.bind(this),
-					getShowFullScreenExplanationStatus: this.getShowFullScreenExplanationStatus,
+					getShowFullScreenExplanationStatus: this.getShowFullScreenExplanationStatus.bind(this),
 					setShowFullScreenExplanationStatus: this.setShowFullScreenExplanationStatus.bind(this),
-					getFullScreenExplanationContent: this.getFullScreenExplanationContent,
-					setFullScreenExplanationContent: this.setFullScreenExplanationContent.bind(this)
+					getFullScreenExplanationContent: this.getFullScreenExplanationContent.bind(this),
+					setFullScreenExplanationContent: this.setFullScreenExplanationContent.bind(this),
+					getToastContent: this.getToastContent.bind(this),
+					setToastContent: this.setToastContent.bind(this),
+					getToastShowStatus: this.getToastShowStatus.bind(this),
+					setToastShowStatus: this.setToastShowStatus.bind(this),
 				}}>
 				{this.props.children}
 			</AppContext.Provider>
