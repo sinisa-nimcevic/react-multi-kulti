@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from "react";
 import { AppContext } from "Config/context";
 import { useHistory } from "react-router-dom";
 import Layout from "Components/Layout/Layout";
-import ChooseImageGame from "Components/ChooseImageGame/ChooseImageGame";
+import GameChooseImage from "Components/GameChooseImage/GameChooseImage";
 
 const GameChooseImageScreen = () => {
 	const context = useContext(AppContext);
@@ -15,7 +15,7 @@ const GameChooseImageScreen = () => {
 
 	return (
 		<Layout>
-			<ChooseImageGame />
+			<GameChooseImage />
 		</Layout>
 	);
 };

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { AppContext } from "Config/context";
 
-const ChooseImageGame = () => {
+const GameChooseImage = () => {
 	const explanationTypeA = <div>This is explanation type A</div>;
 	const explanationTypeB = <div>This is explanation type Bm</div>;
 
@@ -58,4 +58,4 @@ ImageToChoose.propTypes = {
 	explanation: PropTypes.object.isRequired
 };
 
-export default ChooseImageGame;
+export default GameChooseImage;
