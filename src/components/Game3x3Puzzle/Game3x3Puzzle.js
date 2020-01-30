@@ -80,7 +80,6 @@ const PuzzlePieceTarget = ({ id, acceptsType, piecesInPlay, setPieces }) => {
 	});
 
 	function handleDrop() {
-		console.log(item.id, id);
 		if (item.id === id) {
 			setPieces(piecesInPlay.filter(piece => piece.id !== id));
 		} else {

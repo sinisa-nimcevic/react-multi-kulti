@@ -5,11 +5,14 @@ import first from "lodash/first";
 const BLANK_SCREEN = {
 	path: null,
 	active: false,
-	allowNext: true
+	allowNext: false,
+	allowPrev: true
 };
 
 const SCREENS = [
 	{ ...BLANK_SCREEN, path: "/", active: true, allowNext: true },
+	{ ...BLANK_SCREEN, path: "/Intro", allowNext: true, allowPrev: true },
+	{ ...BLANK_SCREEN, path: "/Write", allowNext: true, allowPrev: true },
 	{ ...BLANK_SCREEN, path: "/GameChooseImage" },
 	{ ...BLANK_SCREEN, path: "/Game3x3Puzzle" },
 	{ ...BLANK_SCREEN, path: "/GameSocialCircles" },
@@ -23,10 +26,13 @@ export class DataProvider extends Component {
 		super(props);
 		this.state = {
 			screens: SCREENS,
-			showFullScreenExplanation: false,
+			fullScreenExplanationStatus: false,
 			fullScreenExplanationContent: null,
-			showToast: false,
-			toastContent: null
+			fullScreenExplanationOwnControls: true,
+			toastStatus: false,
+			toastContent: null,
+			toastOwnControls: true,
+			writeText: ""
 		};
 	}
 
@@ -64,12 +70,23 @@ export class DataProvider extends Component {
 		});
 	}
 
-	getShowFullScreenExplanationStatus() {
-		return this.state.showFullScreenExplanation;
+	setScreenAllowNextByIndex(i) {
+		const { screens } = this.state;
+
+		this.setState({
+			screens: screens.map((scr, idx) => {
+				if (idx === i) scr.allowNext = true;
+				return scr;
+			})
+		});
 	}
 
-	setShowFullScreenExplanationStatus(status) {
-		this.setState({ showFullScreenExplanation: !!status });
+	getFullScreenExplanationStatus() {
+		return this.state.fullScreenExplanationStatus;
+	}
+
+	setFullScreenExplanationStatus(status) {
+		this.setState({ fullScreenExplanationStatus: !!status });
 	}
 
 	getFullScreenExplanationContent() {
@@ -80,12 +97,26 @@ export class DataProvider extends Component {
 		this.setState({ fullScreenExplanationContent: content });
 	}
 
-	getToastShowStatus() {
-		return this.state.showToast;
+	getFullScreenExplanationOwnControls() {
+		return this.state.fullScreenExplanationOwnControls;
 	}
 
-	setToastShowStatus(status) {
-		this.setState({ showToast: !!status });
+	setFullScreenExplanationOwnControls(status) {
+		this.setState({ fullScreenExplanationOwnControls: status });
+	}
+
+	setFullScreenExplanation(content, status, ownControls) {
+		content !== undefined && this.setState({ fullScreenExplanationContent: content });
+		status !== undefined && this.setState({ fullScreenExplanationStatus: status });
+		ownControls !== undefined && this.setState({ fullScreenExplanationOwnControls: ownControls });
+	}
+
+	getToastStatus() {
+		return this.state.toastStatus;
+	}
+
+	setToastStatus(status) {
+		this.setState({ toastStatus: !!status });
 	}
 
 	getToastContent() {
@@ -96,23 +127,51 @@ export class DataProvider extends Component {
 		this.setState({ toastContent: content });
 	}
 
+	getToastOwnControls() {
+		return this.state.toastOwnControls;
+	}
+
+	setToastOwnControls(status) {
+		this.setState({ toastOwnControls: status });
+	}
+
+	getWriteText() {
+		return this.state.writeText;
+	}
+
+	setWriteText(text) {
+		this.setState({ writeText: text });
+	}
+
 	render() {
 		return (
 			<AppContext.Provider
 				value={{
 					state: this.state,
+
 					getScreensArray: this.getScreensArray.bind(this),
 					getScreenData: this.getScreenData.bind(this),
 					getScreenPathByIndex: this.getScreenPathByIndex.bind(this),
 					setActiveScreenByPathName: this.setActiveScreenByPathName.bind(this),
-					getShowFullScreenExplanationStatus: this.getShowFullScreenExplanationStatus.bind(this),
-					setShowFullScreenExplanationStatus: this.setShowFullScreenExplanationStatus.bind(this),
+					setScreenAllowNextByIndex: this.setScreenAllowNextByIndex.bind(this),
+
+					getFullScreenExplanationStatus: this.getFullScreenExplanationStatus.bind(this),
+					setFullScreenExplanationStatus: this.setFullScreenExplanationStatus.bind(this),
 					getFullScreenExplanationContent: this.getFullScreenExplanationContent.bind(this),
 					setFullScreenExplanationContent: this.setFullScreenExplanationContent.bind(this),
+					getFullScreenExplanationOwnControls: this.getFullScreenExplanationOwnControls.bind(this),
+					setFullScreenExplanationOwnControls: this.setFullScreenExplanationOwnControls.bind(this),
+					setFullScreenExplanation: this.setFullScreenExplanation.bind(this),
+
 					getToastContent: this.getToastContent.bind(this),
 					setToastContent: this.setToastContent.bind(this),
-					getToastShowStatus: this.getToastShowStatus.bind(this),
-					setToastShowStatus: this.setToastShowStatus.bind(this),
+					getToastStatus: this.getToastStatus.bind(this),
+					setToastStatus: this.setToastStatus.bind(this),
+					getToastOwnControls: this.getToastOwnControls.bind(this),
+					setToastOwnControls: this.setToastOwnControls.bind(this),
+
+					getWriteText: this.getWriteText.bind(this),
+					setWriteText: this.setWriteText.bind(this)
 				}}>
 				{this.props.children}
 			</AppContext.Provider>

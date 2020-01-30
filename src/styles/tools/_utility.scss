@@ -32,6 +32,38 @@ $position-names: "top", "right", "bottom", "left";
 	}
 }
 
+.text-center {
+	text-align: center;
+}
+
+.text-uppercase {
+	text-transform: uppercase;
+}
+
+.text-handwritten {
+	font-family: $fontFamilyHandwritten;
+}
+
+.fz-sm {
+	font-size: $fz-sm;
+}
+
+.fz-md {
+	font-size: $fz-md;
+}
+
+.fz-lg {
+	font-size: $fz-lg;
+}
+
+.color-white {
+	color: white;
+}
+
+.color-primary {
+	color: $color-primary;
+}
+
 .bg-color-primary {
 	background-color: $color-primary;
 }

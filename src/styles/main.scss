@@ -14,16 +14,24 @@
 @import "Styles/elements/_body.scss";
 @import "Styles/elements/_img.scss";
 @import "Styles/elements/_form.scss";
+@import "Styles/elements/_headings.scss";
 
 // Blocks
 // Place styling for commonly grouped components here.
+@import "Styles/blocks/_WriteScreen.scss";
 @import "Styles/blocks/_GameChooseImage.scss";
 @import "Styles/blocks/_GameSocialCircles.scss";
+@import "Styles/blocks/_GameChooseReaction.scss";
+@import "Styles/blocks/_GameGlasses.scss";
 
 // Components
 // Place styling for individual components here.
+@import "Styles/components/_Header.scss";
+@import "Styles/components/_Footer.scss";
+@import "Styles/components/_Toast.scss";
 @import "Styles/components/_FullScreenExplanation.scss";
-@import "Styles/components/_Toast.scss"; 
+@import "Styles/components/_Background.scss";
+@import "Styles/components/_TextBox.scss";
 
 // Utility Classes
 // These are common short classes which can override all other classes.

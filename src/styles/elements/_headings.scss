@@ -1,0 +1,10 @@
+h1 {
+	font-size: $fz-lg;
+	letter-spacing: 0.7px;
+    padding-bottom: $unit * 2;
+	background-image: linear-gradient(to right, black 10%, rgba(255, 255, 255, 0) 0%);
+	background-position: bottom;
+	background-size: 15px 1px;
+	background-repeat: repeat-x;
+	display: inline-block;
+}

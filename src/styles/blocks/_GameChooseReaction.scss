@@ -1,0 +1,65 @@
+$arrowSize: 12px;
+$arrowOffset: $arrowSize + $borderWidth;
+
+.gcr {
+	&__reaction {
+		&__name {
+			@include speechBubble($color-primary);
+			&--arrow {
+				position: relative;
+				&::after {
+					content: " ";
+					display: block;
+					width: 0;
+					height: 0;
+					border-style: solid;
+					border-color: transparent transparent rgba($color-primary, 0.5) transparent;
+					position: absolute;
+                    top: -$arrowOffset;
+				}
+				&-1 {
+					&::after {
+						right: 5%;
+						border-width: 0 0 $arrowSize $arrowSize/2;
+					}
+				}
+				&-2 {
+					&::after {
+						right: 5%;
+						border-width: 0 0 $arrowSize $arrowSize/2;
+					}
+				}
+				&-3 {
+					&::after {
+						left: 50%;
+						-moz-transform: translateX(-50%);
+						-webkit-transform: translateX(-50%);
+						-o-transform: translateX(-50%);
+						-ms-transform: translateX(-50%);
+						transform: translateX(-50%);
+						border-width: 0 $arrowSize/3.5 $arrowSize $arrowSize/3.5;
+					}
+				}
+				&-4 {
+					&::after {
+                        left: 5%;
+						border-width: 0 $arrowSize/2 $arrowSize 0;
+					}
+				}
+				&-5 {
+					&::after {
+                        left: 5%;
+						border-width: 0 $arrowSize/2 $arrowSize 0;
+					}
+				}
+			}
+		}
+		&__answer {
+			opacity: 0;
+			@include transition($defaultTransition);
+			&--active {
+				opacity: 1;
+			}
+		}
+	}
+}

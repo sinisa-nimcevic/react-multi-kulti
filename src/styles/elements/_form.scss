@@ -1,0 +1,22 @@
+button {
+	background: $color-primary;
+	padding: $unit $unit * 2;
+	border: none;
+	min-width: 180px;
+	min-height: 40px;
+	color: white;
+	font-weight: bold;
+	letter-spacing: 0.5px;
+	font-family: $fontFamily;
+	@include transition($defaultTransition);
+	&:hover {
+		background: darken($color-primary, 10%);
+    }
+    &:active {
+        background: darken($color-primary, 20%);
+    }
+	&:disabled {
+		background: lighten($color-primary, 20%);
+		cursor: not-allowed;
+	}
+}

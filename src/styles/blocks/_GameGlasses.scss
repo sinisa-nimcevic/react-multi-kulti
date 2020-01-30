@@ -1,0 +1,27 @@
+.gg {
+	&-question {
+		@include speechBubble($color-primary);
+		@include speechBubblePointer($color-primary, "right", "start");
+	}
+	&-illustration {
+		background: lighten($color-primary, 40%);
+	}
+	&-answers {
+		@include speechBubble($color-primary);
+        @include speechBubblePointer($color-primary, "left", "start");
+        display: flex;
+        flex-flow: row wrap;
+        padding: 0 0 0 0;
+        &__explanation {
+            flex: 1 100%;
+        }
+		&__answer {
+			flex: 1 50%;
+			background: transparent;
+			@include transition($defaultTransition);
+			&:hover {
+				background: lighten($color-primary, 30%);
+			}
+		}
+	}
+}

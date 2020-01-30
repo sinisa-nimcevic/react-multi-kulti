@@ -6,13 +6,14 @@ import { useHistory } from "react-router-dom";
 const __NaMe__Screen = () => {
 	const context = useContext(AppContext);
 	const history = useHistory();
-	
+	const screenData = context.getScreenData();
+
 	useEffect(() => {
 		const { pathname } = history.location;
 		context.setActiveScreenByPathName(pathname);
 	}, []);
 
-	return <Layout>__NaMe__Screen created.</Layout>;
+	return <Layout disableNext={!screenData.screen.allowNext}>__NaMe__Screen created.</Layout>;
 };
 
 __NaMe__Screen.propTypes = {};

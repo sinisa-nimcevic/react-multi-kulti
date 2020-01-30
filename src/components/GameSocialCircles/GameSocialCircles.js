@@ -86,9 +86,10 @@ const GameSocialCircles = () => {
 
 	useEffect(() => {
 		if (showInput) {
-			setInputClasses("gsc__input-container gsc__input-container--active");
-			if (getActiveCircle().value) {
-				setValue(getActiveCircle().value);
+			const activeCircle = getActiveCircle();
+			setInputClasses(`gsc__input-container gsc__input-container--active gsc__input-container--${activeCircle.id}`);
+			if (activeCircle.value) {
+				setValue(activeCircle.value);
 			}
 		}
 		if (!showInput) setInputClasses("gsc__input-container");
@@ -126,7 +127,9 @@ const CircleInput = ({ circle, onClick }) => {
 
 	return (
 		<div className={getClasses()} onClick={onClick}>
-			{circle.value} {circle.id}
+			<div>
+				{circle.value}
+			</div>
 		</div>
 	);
 };

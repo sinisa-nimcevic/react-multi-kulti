@@ -7,6 +7,7 @@ import GameChooseImage from "Components/GameChooseImage/GameChooseImage";
 const GameChooseImageScreen = () => {
 	const context = useContext(AppContext);
 	const history = useHistory();
+	const screenData = context.getScreenData();
 
 	useEffect(() => {
 		const { pathname } = history.location;
@@ -14,7 +15,7 @@ const GameChooseImageScreen = () => {
 	}, []);
 
 	return (
-		<Layout>
+		<Layout disableNext={!screenData.screen.allowNext}>
 			<GameChooseImage />
 		</Layout>
 	);

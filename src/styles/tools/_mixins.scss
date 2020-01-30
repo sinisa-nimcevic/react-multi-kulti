@@ -1,6 +1,118 @@
 @mixin transition($transition...) {
-    -moz-transition:    $transition;
-    -o-transition:      $transition;
-    -webkit-transition: $transition;
-    transition:         $transition;
+	-moz-transition: $transition;
+	-o-transition: $transition;
+	-webkit-transition: $transition;
+	transition: $transition;
+}
+
+@mixin speechBubble($color) {
+	padding: $unit * 2 $unit;
+	border: $borderWidth solid rgba($color, 0.5);
+}
+
+@mixin speechBubbleFullColor($color) {
+	padding: $unit * 2 $unit;
+	background-color: rgba($color, 0.5);
+}
+
+$pointerSize: 30px;
+$pointerOffset: $borderWidth + $pointerSize;
+$pointerOffsetAlt: $pointerSize;
+
+@mixin speechBubblePointer($color, $edge, $position, $alt: "") {
+	position: relative;
+	&::after {
+		content: " ";
+		display: block;
+		position: absolute;
+		border: 1px solid transparent;
+		@if $edge == "top" {
+			border-width: 0 $pointerSize/2 $pointerSize 0;
+			border-color: transparent transparent rgba($color, 0.5) transparent;
+			top: -$pointerOffset;
+			@if $alt == "no-border" {
+				top: -$pointerOffsetAlt;
+			}
+			@if $position == "start" {
+				left: 5%;
+			}
+			@if $position == "center" {
+				left: 50%;
+				-moz-transform: translateX(-50%);
+				-webkit-transform: translateX(-50%);
+				-o-transform: translateX(-50%);
+				-ms-transform: translateX(-50%);
+				transform: translateX(-50%);
+			}
+			@if $position == "end" {
+				right: 5%;
+			}
+		}
+		@if $edge == "right" {
+			border-color: transparent transparent transparent rgba($color, 0.5);
+			border-width: $pointerSize/2 0 $pointerSize/6 $pointerSize;
+			right: -$pointerOffset;
+			@if $alt == "no-border" {
+				right: -$pointerOffsetAlt;
+			}
+			@if $position == "start" {
+				top: 5%;
+			}
+			@if $position == "center" {
+				top: 50%;
+				-moz-transform: translateY(-50%);
+				-webkit-transform: translateY(-50%);
+				-o-transform: translateY(-50%);
+				-ms-transform: translateY(-50%);
+				transform: translateY(-50%);
+			}
+			@if $position == "end" {
+				bottom: 5%;
+			}
+		}
+		@if $edge == "bottom" {
+			border-width: $pointerSize $pointerSize/2 0 0;
+			border-color: rgba($color, 0.5) transparent transparent transparent;
+			bottom: -$pointerOffset;
+			@if $alt == "no-border" {
+				bottom: -$pointerOffsetAlt;
+			}
+			@if $position == "start" {
+				left: 5%;
+			}
+			@if $position == "center" {
+				left: 50%;
+				-moz-transform: translateX(-50%);
+				-webkit-transform: translateX(-50%);
+				-o-transform: translateX(-50%);
+				-ms-transform: translateX(-50%);
+				transform: translateX(-50%);
+			}
+			@if $position == "end" {
+				right: 5%;
+			}
+		}
+		@if $edge == "left" {
+			border-color: transparent rgba($color, 0.5) transparent transparent;
+			border-width: $pointerSize/2 $pointerSize $pointerSize/6 0;
+			left: -$pointerOffset;
+			@if $alt == "no-border" {
+				left: -$pointerOffsetAlt;
+			}
+			@if $position == "start" {
+				top: 5%;
+			}
+			@if $position == "center" {
+				top: 50%;
+				-moz-transform: translateY(-50%);
+				-webkit-transform: translateY(-50%);
+				-o-transform: translateY(-50%);
+				-ms-transform: translateY(-50%);
+				transform: translateY(-50%);
+			}
+			@if $position == "end" {
+				bottom: 5%;
+			}
+		}
+	}
 }

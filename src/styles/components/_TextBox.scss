@@ -1,0 +1,73 @@
+.textbox {
+	&-container {
+		display: flex;
+		flex-flow: column wrap;
+		height: 470px;
+		padding: 10vh 20px 0 20px;
+	}
+	&-inner-container {
+		box-sizing: border-box;
+		width: 33.333%;
+		padding: $unit * 2;
+		&--type1 {
+			padding-bottom: $unit * 5;
+		}
+		&--type2 {
+			padding-top: $unit * 5;
+		}
+		&--type3 {
+			padding-left: $unit * 7;
+		}
+		&--type4 {
+			padding-left: $unit * 4;
+		}
+		&--type5 {
+			padding-left: $unit * 7;
+		}
+		&--type6 {
+			padding-bottom: $unit * 5;
+		}
+	}
+	@include speechBubbleFullColor($color-primary);
+	box-sizing: border-box;
+	padding: 4 * $unit 5 * $unit !important;
+	color: white;
+	font-size: $fz-lg * 0.7;
+	line-height: 140%;
+	text-align: center;
+	&--type1 {
+		@include speechBubbleFullColor(#53a1a1);
+		@include speechBubblePointer(#53a1a1, "bottom", "start", "no-border");
+	}
+	&--type2 {
+		background-color: transparent;
+		font-family: $fontFamilyHandwritten;
+		font-size: $fz-lg * 1.5;
+		span {
+			display: block;
+			font-size: $fz-lg * 1.1;
+		}
+	}
+	&--type3 {
+		@include speechBubbleFullColor(#97be3d);
+		@include speechBubblePointer(#97be3d, "right", "start", "no-border");
+	}
+	&--type4 {
+		@include speechBubbleFullColor(#f7fe71);
+		@include speechBubblePointer(#f7fe71, "left", "start", "no-border");
+	}
+	&--type5 {
+		@include speechBubbleFullColor(#f5e400);
+		@include speechBubblePointer(#f5e400, "left", "end", "no-border");
+	}
+	&--type6 {
+		@include speechBubbleFullColor(#8bcbb7);
+		@include speechBubblePointer(#8bcbb7, "bottom", "end", "no-border");
+	}
+}
+
+// zelenkasto plava
+// zelena
+// narandzasta
+// zuto
+// tirkiz

@@ -11,10 +11,11 @@ const FullScreenExplanation = ({ type = "fse" }) => {
 			fg: "fse-content",
 			fgShow: "fse-content fse-content--show",
 			close: "fse-content__close",
-			shouldShow: context.getShowFullScreenExplanationStatus,
-			control: context.setShowFullScreenExplanationStatus,
+			shouldShow: context.getFullScreenExplanationStatus,
 			content: context.getFullScreenExplanationContent,
-			time: 300,
+			defaultOpenCloseControl: context.setFullScreenExplanationStatus,
+			showOwnControls: context.getFullScreenExplanationOwnControls,
+			time: 300
 		},
 		toast: {
 			bg: "toast-container",
@@ -22,22 +23,20 @@ const FullScreenExplanation = ({ type = "fse" }) => {
 			fg: "toast",
 			fgShow: "toast toast--show",
 			close: "toast__close",
-			shouldShow: context.getToastShowStatus,
-			control: context.setToastShowStatus,
+			shouldShow: context.getToastStatus,
 			content: context.getToastContent,
-			time: 150,
+			defaultOpenCloseControl: context.setToastStatus,
+			showOwnControls: context.getToastOwnControls,
+			time: 150
 		}
 	};
 
 	const handleCloseExplanation = () => {
-		CLASSES[type].control(false);
+		CLASSES[type].defaultOpenCloseControl(false);
 	};
 
 	return CLASSES[type].shouldShow() ? (
-		<FullScreenExplanationWithoutData
-			config={CLASSES[type]}
-			closeExplanation={handleCloseExplanation}
-		/>
+		<FullScreenExplanationWithoutData config={CLASSES[type]} closeExplanation={handleCloseExplanation} showOwnControls={CLASSES[type].showOwnControls} />
 	) : null;
 };
 
@@ -45,9 +44,9 @@ FullScreenExplanation.propTypes = {
 	type: PropTypes.string
 };
 
-const FullScreenExplanationWithoutData = ({ config, closeExplanation }) => {
+const FullScreenExplanationWithoutData = ({ config, closeExplanation, showOwnControls }) => {
 	const [classes, setClasses] = useState(config.bg);
-	const [contentClasses, setContentClasses] = useState(config.fg)
+	const [contentClasses, setContentClasses] = useState(config.fg);
 
 	const smoothCloseExplanation = () => {
 		setClasses(config.bg);
@@ -73,7 +72,7 @@ const FullScreenExplanationWithoutData = ({ config, closeExplanation }) => {
 		<div className={classes}>
 			<div className={contentClasses}>
 				{config.content()}
-				<button className={config.close} onClick={smoothCloseExplanation}>Close</button>
+				{showOwnControls() && <Controls className={config.close} onClick={smoothCloseExplanation} />}
 			</div>
 		</div>
 	);
@@ -82,8 +81,24 @@ const FullScreenExplanationWithoutData = ({ config, closeExplanation }) => {
 FullScreenExplanationWithoutData.propTypes = {
 	closeExplanation: PropTypes.func.isRequired,
 	content: PropTypes.object,
+	showOwnControls: PropTypes.func,
 	time: PropTypes.number,
 	config: PropTypes.object
+};
+
+const Controls = ({ className, onClick }) => {
+	return (
+		<div className="flex flex-dir--row-reverse p-double">
+			<button className={className} onClick={onClick}>
+				Close
+			</button>
+		</div>
+	);
+};
+
+Controls.propTypes = {
+	className: PropTypes.string,
+	onClick: PropTypes.func
 };
 
 export default FullScreenExplanation;

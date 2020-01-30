@@ -1,5 +1,16 @@
 $gutter: 12px;
 
+.main-container {
+	max-width: 960px;
+	height: 100%;
+	margin: 0 auto;
+}
+
+.flex {
+	display: flex;
+	flex-wrap: wrap;
+}
+
 .flex-grid {
 	display: flex;
 	padding: 0 $gutter/2;
@@ -31,12 +42,18 @@ $gutter: 12px;
 
 .flex-dir {
 	&--row {
-        flex-direction: row;
-        >div {
-            display: inline-flex;
-        }
+		flex-direction: row;
+		> div {
+			display: inline-flex;
+		}
 	}
 	&--row-reverse {
 		flex-direction: row-reverse;
+	}
+}
+
+.align-self {
+	&--flex-end {
+		align-self: flex-end;
 	}
 }
