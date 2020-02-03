@@ -40,7 +40,7 @@ const Footer = ({ hidePrev, onNext, onPrev, disableNext }) => {
 	return (
 		<div className="footer">
 			<div className="flex-row-1">
-				<div className="flex-col-1 flex flex-dir--row-reverse mt-single">
+				<div className="flex-col-1 flex flex-dir--row-reverse mt-single mb-double">
 					<Button text="NEXT" onClick={() => handleNavigation("next")} disabled={disableNext} />
 					{!hidePrev && <Button text="PREVIOUS" onClick={() => handleNavigation("prev")} disabled={false} className="mr-single" />}
 				</div>

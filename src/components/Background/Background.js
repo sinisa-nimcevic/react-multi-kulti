@@ -7,6 +7,7 @@ const Background = props => {
 
 		if (props.gray) classes.push("background--gray");
 		if (props.colorPrimary) classes.push("background--primary");
+		if (props.semaphore) classes.push("background--semaphore");
 		if (props.flex) classes.push("flex");
 		if (props.className)
 			props.className.split(" ").forEach(el => {

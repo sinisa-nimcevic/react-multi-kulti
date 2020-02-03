@@ -135,6 +135,12 @@ export class DataProvider extends Component {
 		this.setState({ toastOwnControls: status });
 	}
 
+	setToast(content, status, ownControls) {
+		content !== undefined && this.setState({ toastContent: content });
+		status !== undefined && this.setState({ toastStatus: status });
+		ownControls !== undefined && this.setState({ toastOwnControls: ownControls });
+	}
+
 	getWriteText() {
 		return this.state.writeText;
 	}
@@ -169,6 +175,7 @@ export class DataProvider extends Component {
 					setToastStatus: this.setToastStatus.bind(this),
 					getToastOwnControls: this.getToastOwnControls.bind(this),
 					setToastOwnControls: this.setToastOwnControls.bind(this),
+					setToast: this.setToast.bind(this),
 
 					getWriteText: this.getWriteText.bind(this),
 					setWriteText: this.setWriteText.bind(this)

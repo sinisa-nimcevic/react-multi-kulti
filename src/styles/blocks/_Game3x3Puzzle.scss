@@ -1,0 +1,64 @@
+$pieceHeight: 126px;
+
+.g33 {
+	&__placeholder {
+		height: $pieceHeight;
+		border: 1px dashed rgba(white, 0.5);
+		background-color: transparent;
+		margin-top: $unit * 2;
+		@include transition($defaultTransition);
+		&--is-over {
+			background-color: rgba(white, 0.8) !important;
+		}
+		&--can-drop {
+			background-color: rgba(white, 0.4);
+		}
+		&--populated {
+			background-color: transparent !important;
+			border: 1px dashed transparent !important;
+			.g33__piece {
+				margin: 0 0 0 0;
+                padding: 0 0 0 0;
+                > div {
+                    background-color: transparent;
+                }
+			}
+		}
+	}
+	&__piece {
+		padding: $unit;
+		height: $pieceHeight;
+		flex-basis: 33.3333%;
+		box-sizing: border-box;
+		font-size: $fz-md * 1.2;
+		color: white;
+		> div {
+			background-color: rgba(white, 0.1);
+			padding: $unit * 2;
+			height: 100%;
+			img {
+				height: $pieceHeight - ($unit * 6);
+				width: $pieceHeight - ($unit * 6);
+			}
+			.type2,
+			.type3 {
+				display: flex;
+				align-items: center;
+				height: 100%;
+				p {
+					padding-left: $unit * 2;
+					span {
+						font-family: $fontFamilyHandwritten;
+						font-size: 1.2em;
+					}
+				}
+			}
+			.type3 {
+				font-size: $fz-md;
+				img {
+					width: $pieceHeight/2;
+				}
+			}
+		}
+	}
+}

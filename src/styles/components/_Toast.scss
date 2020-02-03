@@ -1,4 +1,18 @@
 .toast {
+	border: 1px solid #dadada;
+	background-color: #bbb;
+	position: relative;
+	width: 60%;
+	margin-left: 20%;
+	padding: $unit * 4;
+	padding-bottom: 0;
+	background: white;
+	box-shadow: $boxShadow;
+	@include transition($defaultTransition);
+	opacity: 0;
+	&--show {
+		opacity: 1;
+	}
 	&-container {
 		position: fixed;
 		top: 0;
@@ -7,27 +21,46 @@
 		text-align: center;
 		padding: $unit * 2;
 		@include transition($defaultTransition);
-        top: -400px;
+		top: -400px;
 		&--show {
-            top: 0;
+			top: 0;
 		}
 	}
 	&__close {
 		position: absolute;
-		top: 0;
-		right: 0;
+		top: $unit;
+		right: $unit;
 		padding: $unit;
-    }
-    background-color: #bbb;
-	position: relative;
-	width: 60%;
-	margin-left: 20%;
-	padding: $unit * 2;
-	background: white;
-	box-shadow: $boxShadow;
-	@include transition($defaultTransition);
-	opacity: 0;
-	&--show {
-		opacity: 1;
+		background-color: $color-danger;
+		border-radius: 100%;
+		min-width: 0;
+		min-height: 0;
+		width: 20px;
+		height: 20px;
+		color: transparent;
+		overflow: hidden;
+		&:hover {
+			background-color: darken($color-danger, 10%);
+		}
+		&:active {
+			background-color: darken($color-danger, 15%);
+		}
+		&::before,
+		&::after {
+			content: " ";
+			display: block;
+			width: 9px;
+			height: 2px;
+			background: white;
+			position: absolute;
+			top: 9px;
+			left: 6px;
+		}
+		&::before {
+			transform: rotate(-45deg);
+		}
+		&::after {
+			transform: rotate(45deg);
+		}
 	}
 }
